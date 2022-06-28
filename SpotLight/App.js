@@ -4,20 +4,24 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { SafeAreaView, StyleSheet, Platform, StatusBar } from 'react-native';
+import SpotLight from './src/features/spotlight';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>SpotLight App</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <SpotLight />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    flex: 1,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingHorizontal: Platform.OS === 'android' ? 24 : 0,
+    backgroundColor: '#6A40CC', //primary 500
   },
 });
 
