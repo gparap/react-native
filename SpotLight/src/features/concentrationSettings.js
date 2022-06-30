@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, TextInput, View, ToastAndroid, Platform } from 'react-native';
 import Styles from '../theme/styles';
 import MinuteButton from '../components/Buttons/minutesButton';
 import ConcentrationButton from '../components/Buttons/startConcentrationButton';
@@ -14,11 +14,32 @@ const Settings = ({ startTimer, concentrationTask, concentrationTime }) => {
     const [task, setTask] = useState('');
     const [time, setTime] = useState('');
 
+    function handleConcentration() {
+        if (isTimerSet()) {
+            startConcentration();
+        }
+    }
+
+    //check if settings where set properly
+    function isTimerSet() {
+        if ((task === '' || time === '') && Platform.OS === 'android') {
+            ToastAndroid.show("Please, complete the settings...", ToastAndroid.LONG);
+            return false;
+        }
+        return true;
+    }
+
+
+    //start concentration timer
+    function startConcentration() {
+        setConcentrationTimer();
+        setConcentrationTask();
+        setConcentrationTime();
+    }
+
     //set any value to the concentration timer
     function setConcentrationTimer() {
         startTimer("any");
-        setConcentrationTask();
-        setConcentrationTime();
     }
 
     //set the value of the concentration task
@@ -33,6 +54,9 @@ const Settings = ({ startTimer, concentrationTask, concentrationTime }) => {
 
     return (
         <View>
+            {/* header */}
+            <Text style={Styles.textHeader}>Settings</Text>
+
             {/* concentration task */}
             <Text style={Styles.textNormal}>What do you want to concentrate on? </Text>
             <TextInput
@@ -69,7 +93,7 @@ const Settings = ({ startTimer, concentrationTask, concentrationTime }) => {
 
             {/* start concentratiing */}
             <StartConcentrationButton
-                onPress={setConcentrationTimer}
+                onPress={handleConcentration}
                 text={"BEGIN"} />
         </View>
     );

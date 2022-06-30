@@ -25,6 +25,15 @@ const Styles = StyleSheet.create({
     fontSize: 16,
   },
 
+  //header text style
+  textHeader: {
+    alignSelf: 'center',
+    color: Colors.white,
+    opacity: 0.77,
+    paddingBottom: Platform.OS === 'android' ? StatusBar.currentHeight / 2 : 0,
+    fontSize: 32,
+  },
+
   //TextInput style
   textInput: {
     textAlign: 'center',

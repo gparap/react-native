@@ -17,8 +17,14 @@ const Timer = ({ startTimer, concentrationTask, concentrationTime }) => {
 
     return (
         <View>
+            {/* header */}
+            <Text style={Styles.textHeader}>Concentration</Text>
+
+            {/* concentration info */}
             <Text style={Styles.textNormal}>Concentrating  on: {concentrationTask} </Text>
             <Text style={Styles.textNormal}>Concentrating for: {concentrationTime}</Text>
+
+            {/* stop concentration */}
             <ExitConcentrationButton text="BACK"
                 onPress={setConcentrationTimer} />
         </View>
