@@ -1,20 +1,38 @@
 /**
- * Concentration Feature
+ * Concentration Settings Feature
  * Created by gparap (c) 2022
  */
 
 import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 import Styles from '../theme/styles';
-import MinuteButton from './../../src/components/Buttons/minutesButton';
-import ConcentrationButton from '../components/Buttons/concentrationButton';
+import MinuteButton from '../components/Buttons/minutesButton';
+import ConcentrationButton from '../components/Buttons/startConcentrationButton';
+import StartConcentrationButton from '../components/Buttons/startConcentrationButton';
 
-const SpotLight = () => {
+const Settings = ({ startTimer, concentrationTask, concentrationTime }) => {
     const [task, setTask] = useState('');
     const [time, setTime] = useState('');
 
+    //set any value to the concentration timer
+    function setConcentrationTimer() {
+        startTimer("any");
+        setConcentrationTask();
+        setConcentrationTime();
+    }
+
+    //set the value of the concentration task
+    function setConcentrationTask() {
+        concentrationTask(task);
+    }
+
+    //set the value of the concentration time
+    function setConcentrationTime() {
+        concentrationTime(time);
+    }
+
     return (
-        <View style={Styles.containerConcentration}>
+        <View>
             {/* concentration task */}
             <Text style={Styles.textNormal}>What do you want to concentrate on? </Text>
             <TextInput
@@ -35,7 +53,7 @@ const SpotLight = () => {
                     onPress={newTime => setTime("15'")}
                     minutes={"15'"} />
                 <MinuteButton
-                    onPressListener={newTime => setTime("20'")}
+                    onPress={newTime => setTime("20'")}
                     minutes={"20'"} />
                 <MinuteButton
                     onPress={newTime => setTime("25'")}
@@ -50,11 +68,11 @@ const SpotLight = () => {
             <Text style={Styles.textNormal}>Concentrating for: {time} </Text>
 
             {/* start concentratiing */}
-            <ConcentrationButton
-                onPress={console.log("Not implemented yet.")}
+            <StartConcentrationButton
+                onPress={setConcentrationTimer}
                 text={"BEGIN"} />
         </View>
     );
 };
 
-export default SpotLight;
+export default Settings;

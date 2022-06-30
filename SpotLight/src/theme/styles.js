@@ -17,12 +17,6 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.primaryColor,
   },
 
-  //concentration feature container style
-  containerConcentration: {
-    flex: 1,
-    alignSelf: 'center',
-  },
-
   //normal text style
   textNormal: {
     color: Colors.white,

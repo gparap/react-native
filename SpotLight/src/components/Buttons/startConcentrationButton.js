@@ -7,7 +7,7 @@ import React from "react";
 import { TouchableOpacity, View, Text } from 'react-native';
 import Styles from "../../theme/styles";
 
-const ConcentrationButton = ({ text, onPress }) => {
+const StartConcentrationButton = ({ text, onPress }) => {
     return (
         <View style={Styles.containerButton}>
             <TouchableOpacity style={Styles.button}
@@ -18,4 +18,4 @@ const ConcentrationButton = ({ text, onPress }) => {
     );
 }
 
-export default ConcentrationButton;
+export default StartConcentrationButton;
