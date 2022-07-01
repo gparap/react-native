@@ -1,2 +1,2 @@
 # react-native
-Android projects using React Native framework
+Projects using React Native framework
