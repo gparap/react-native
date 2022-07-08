@@ -22,11 +22,12 @@ export default AddToDoInput
 const styles = StyleSheet.create({
     view: {
         flex: 0.75,
+        alignItems:'center',
+    justifyContent:'center'
     },
     textInput: {
-        backgroundColor: 'black',
         height: 40,
-        margin: 12,
+        marginStart: 16,
         borderWidth: 1,
         padding: 10,
         width: '100%',
